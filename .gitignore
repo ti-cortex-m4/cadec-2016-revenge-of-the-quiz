@@ -1,3 +1,4 @@
+<<<<<<< d700ca6ba5b4a61ccfb4824989506bf0a8fe596e
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -10,3 +11,31 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+=======
+# Operating System Files
+
+*.DS_Store
+Thumbs.db
+
+# Build Files #
+
+bin
+target
+build/
+.gradle
+dependency-reduced-pom.xml
+
+# Eclipse Project Files #
+
+.classpath
+.project
+.settings
+
+# IntelliJ IDEA Files #
+
+*.iml
+*.ipr
+*.iws
+*.idea
+
+>>>>>>> Initial commit of Reactor with drafted guide.
