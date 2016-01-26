@@ -1,2 +1,2 @@
 # cade-2016-revenge-of-the-quiz
-Cade presentation
+CADEC presentation on Jan 27 2016
