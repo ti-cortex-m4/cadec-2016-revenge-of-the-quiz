@@ -33,7 +33,8 @@ def usage(code):
 
 def run(path, method, data):
     connection = httplib.HTTPConnection(server())
-    connection.request(method, path, json.dumps(data))
+    headers = {"Content-type": "application/json"}
+    connection.request(method, path, json.dumps(data), headers)
     response = connection.getresponse()
     if (response.status not in [200, 201]):
         raise APIError(response)
@@ -44,6 +45,13 @@ def download(name):
     path = "/api/quizzes/{}".format(name)
     response = run(path, 'GET', None)
     print "OK Quiz " + name + " has been successfully downloaded"
+    print response.read()
+
+def upload(name):
+    with open(name) as json_file:
+        data = json.load(json_file)
+    response = run('/api/quizzes', 'POST', data)
+    print "OK Quiz " + data['name'] + " has been successfully uploaded"
     print response.read()
 
 def close(name):
@@ -70,7 +78,7 @@ def main(argv):
         run()
 
     try:
-        opts, args = getopt.getopt(argv, "hc:s:e:d:", ["help", "close=", "standings=", "endpoint=", "download="])
+        opts, args = getopt.getopt(argv, "hc:s:e:d:u:", ["help", "close=", "standings=", "endpoint=", "download=", "upload="])
     except getopt.GetoptError:
         usage(1)
 
@@ -83,6 +91,9 @@ def main(argv):
         elif opt in ["-d", "--download"]:
             def run():
                 download(arg)
+        elif opt in ["-u", "--upload"]:
+            def run():
+                upload(arg)
         elif opt in ["-s", "--standings"]:
             def run():
                 standings(arg)
