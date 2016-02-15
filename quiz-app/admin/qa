@@ -45,20 +45,17 @@ def download(name):
     path = "/api/quizzes/{}".format(name)
     response = run(path, 'GET', None)
     print "OK Quiz " + name + " has been successfully downloaded"
-    print response.read()
 
 def upload(name):
     with open(name) as json_file:
         data = json.load(json_file)
     response = run('/api/quizzes', 'POST', data)
     print "OK Quiz " + data['name'] + " has been successfully uploaded"
-    print response.read()
 
 def close(name):
     path = "/api/quizzes/{}/close".format(name)
     response = run(path, 'PUT', None)
     print "OK Quiz " + name + " has been successfully closed"
-    print response.read()
 
 def standings(name):
     path = "/api/quizzes/{}/results".format(name)
