@@ -5,12 +5,14 @@ __author__ = 'Peter'
 
 import os, sys, getopt, json, httplib
 
-
 class APIError(Exception):
     def __init__(self, response):
         self.response = response
     def __str__(self):
         return repr(self.response)
+
+def qp():
+    return '/api/quizzes'
 
 def server():
     """Return server endpoint"""
@@ -42,23 +44,24 @@ def run(path, method, data):
         return response
 
 def download(name):
-    path = "/api/quizzes/{}".format(name)
+    path = "{}/{}".format(qp(), name)
     response = run(path, 'GET', None)
     print "OK Quiz " + name + " has been successfully downloaded"
+    print response.read()
 
 def upload(name):
     with open(name) as json_file:
         data = json.load(json_file)
-    response = run('/api/quizzes', 'POST', data)
+    response = run(qp(), 'POST', data)
     print "OK Quiz " + data['name'] + " has been successfully uploaded"
 
 def close(name):
-    path = "/api/quizzes/{}/close".format(name)
+    path = "{}/{}/close".format(qp(), name)
     response = run(path, 'PUT', None)
     print "OK Quiz " + name + " has been successfully closed"
 
 def standings(name):
-    path = "/api/quizzes/{}/results".format(name)
+    path = "{}/{}/results".format(qp(), name)
     response = run(path, 'GET', None)
     fmt = '{:>4} {:<45}{:>5}{:>10}'
     print "OK Actual standings are as follows"
