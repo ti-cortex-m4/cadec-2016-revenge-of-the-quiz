@@ -1,0 +1,10 @@
+eb, cf
+eb scale 2
+cf domains; http://quiz.cfapps.io
+heroku domains -a cadec-quiz, cadec-quiz.herokuapp.com
+cf env quiz
+eb printenv
+heroku config -a cadec-quiz
+eb list
+gcloud container clusters  list
+aws s3 ls s3://elasticbeanstalk-eu-west-1-936733627006/resources/environments/logs/publish/e-uzgxpf7wgb/i-f63a317d/

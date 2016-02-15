@@ -1,0 +1,16 @@
+app:
+  environment:
+    SPRING_DATASOURCE_URL: jdbc:mysql://db/test
+    SPRING_JPA_DATABASE-PLATFORM: org.hibernate.dialect.MySQLDialect
+  build: .
+  ports:
+   - "8080:80"
+  links:
+   - mysql-db-service:db
+mysql-db-service:
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    MYSQL_DATABASE: test
+    MYSQL_USER: quiz
+    MYSQL_PASSWORD: nopassword
+  image: mysql:5.6

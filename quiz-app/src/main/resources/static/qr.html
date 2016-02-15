@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Länk - Quiz App</title>
+	<meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		@font-face {
+			font-family: 'InterstateBold';
+			src: url('css/font/Callista/Interstate-Bold.eot');
+			src: url('css/font/Callista/Interstate-Bold.eot?#iefix') format('embedded-opentype'),
+			url('css/font/Callista/Interstate-Bold.woff') format('woff'),
+			url('css/font/Callista/Interstate-Bold.ttf') format('truetype');
+			font-weight: bold;
+			font-style: normal;
+		}
+
+		.center {
+			text-align: center;
+			width: '100%';
+			font-family: "League Gothic", Impact, sans-serif;
+			font-size: 36px;
+			font-weight: normal;
+			color: #434491;
+		}
+
+		body {
+			font-family: 'InterstateBold';
+			background: #FFF3B9;
+			background: -moz-radial-gradient(center, circle cover, white 0%, #fff3b9 100%);
+			background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, white), color-stop(100%, #fff3b9));
+			background: -webkit-radial-gradient(center, circle cover, white 0%, #fff3b9 100%);
+			background: -o-radial-gradient(center, circle cover, white 0%, #fff3b9 100%);
+			background: -ms-radial-gradient(center, circle cover, white 0%, #fff3b9 100%);
+			background: radial-gradient(center, circle cover, white 0%, #fff3b9 100%);
+			background-color: #f7f3de;
+		}
+
+		[data-role=footer] {
+			bottom:0; position:absolute !important; top: auto !important; width:100%;
+		}
+
+	</style>
+</head>
+
+<body>
+
+<div style="width: 100%;" >
+	<h1 id="app-url" class="center">
+	</h1>
+
+	<div id="app-qr" class="center">
+	</div>
+</div>
+
+<div id="footer" data-role="footer">
+	<div class="center">CADEC Quiz 2016</div>
+</div>
+
+<!--  JQuery -->
+<script src="/webjars/jquery/1.9.1/jquery.min.js" ></script>
+<script src="js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+		$(document).ready(function() {
+			var address = 'http://quiz.grattis.org';
+			$('#app-qr').qrcode({ render: 'canvas', size: 580, text : address });
+			$('#app-url').html(address);
+		});
+	</script>
+
+</body>
+</html>

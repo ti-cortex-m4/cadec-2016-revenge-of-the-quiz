@@ -1,0 +1,189 @@
+@font-face {
+    font-family: 'DigitaldreamFat';
+    src: url('font/Digital-dream/DIGITALDREAMFAT-webfont.eot');
+    src: url('font/Digital-dream/DIGITALDREAMFAT-webfont.eot?#iefix')
+    format('embedded-opentype'),
+    url('font/Digital-dream/DIGITALDREAMFAT-webfont.woff') format('woff'),
+    url('font/Digital-dream/DIGITALDREAMFAT-webfont.ttf')
+    format('truetype'),
+    url('font/Digital-dream/DIGITALDREAMFAT-webfont.svg#DigitaldreamFat')
+    format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'InterstateRegularCondensed';
+    font-family: 'font/Callista/Interstate-RegularCondensed';
+    src: url('font/Callista/Interstate-RegularCondensed.eot');
+    src: url('font/Callista/Interstate-RegularCondensed.eot?#iefix') format('embedded-opentype'),
+    url('font/Callista/Interstate-RegularCondensed.woff') format('woff'),
+    url('font/Callista/Interstate-RegularCondensed.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'InterstateBold';
+    src: url('font/Callista/Interstate-Bold.eot');
+    src: url('font/Callista/Interstate-Bold.eot?#iefix') format('embedded-opentype'),
+    url('font/Callista/Interstate-Bold.woff') format('woff'),
+    url('font/Callista/Interstate-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'InterstateLightCondensed';
+    src: url('font/Callista/Interstate-LightCondensed.eot');
+    src: url('font/Callista/Interstate-LightCondensed.eot?#iefix') format('embedded-opentype'),
+    url('font/Callista/Interstate-LightCondensed.woff') format('woff'),
+    url('font/Callista/Interstate-LightCondensed.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+.white {
+    color: #434491;
+}
+
+.right {
+    margin: 0 auto;
+    float: right;
+}
+
+.left {
+    margin: 0 auto;
+    float: left;
+}
+
+.countdown {
+    font-family: 'DigitaldreamFat';
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;;
+    color: #434491;
+    position: absolute !important;
+    bottom: 0;
+    margin: 0 auto;
+    border-radius: 9px;
+    -o-border-radius: 9px;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px;
+}
+
+.carousel-caption,
+.carousel-content,
+.glyphicon-chevron-right {
+    color: #434491;
+}
+
+
+.carousel-caption,
+.carousel-content {
+    font-family: 'InterstateLightCondensed';
+}
+
+header {
+    font-family: 'InterstateBold';
+    text-transform: uppercase;
+    background-color: #434491;
+    color: #FFFFFF;
+}
+
+.btn {
+    font-family: 'InterstateLightCondensed';
+    font-weight: bold;
+    font-size: 1.2em;
+    background-color: #73C3B6;
+    border-radius: 0px;
+    border-color: #FFF3B9;
+}
+
+td, th {
+    text-align: left;
+    color: #434491;
+    max-width: 160px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.error-box {
+    margin: 0 auto;
+    float: center;
+}
+
+body {
+    color: #434491;
+}
+
+html,
+body {
+    font-family: 'InterstateLightCondensed';
+    height: 100%;
+    width: 100%;
+    background: -moz-radial-gradient(center, circle cover, white 0%, #fff3b9 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, white), color-stop(100%, #fff3b9));
+    background: -webkit-radial-gradient(center, circle cover, white 0%, #fff3b9 100%);
+    background: -o-radial-gradient(center, circle cover, white 0%, #fff3b9 100%);
+    background: -ms-radial-gradient(center, circle cover, white 0%, #fff3b9 100%);
+    background: radial-gradient(center, circle cover, white 0%, #fff3b9 100%);
+    background-color: #FFF3B9;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-inner {
+    font-family: 'InterstateLightCondensed';
+    background-color: transparent;
+}
+
+
+.carousel-indicators .active {
+    background-color: #434491;
+}
+
+.carousel-indicators li {
+    background-color: #FFB819;
+}
+
+.carousel-inner {
+    margin-bottom: 50px;
+}
+
+.carousel .item {
+    min-height: 200px !important;
+}
+
+.hidden {
+    display: none;
+}
+
+.disable {
+    cursor: default;
+    pointer-events: none;
+    color: #c0c0c0;
+    background-color: #ffffff;
+}
+
+.glyphicon.text-muted {
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+    opacity: 0.5;
+}
+
+.glyphicon.spinning {
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1) rotate(360deg); }
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}

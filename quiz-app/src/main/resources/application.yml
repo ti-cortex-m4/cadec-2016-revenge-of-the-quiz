@@ -1,0 +1,44 @@
+# application configuration
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+spring:
+  application:
+    name: QuizApp
+  main:
+    show_banner: false
+    web_environment: true
+  datasource:
+    username: quiz
+    password: nopassword
+    testOnBorrow: true
+    validationQuery: select 1
+    defaultAutoCommit: false
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        ddl-auto: update
+        show_sql: false
+        format_sql: false
+
+server:
+  port: 9090
+  address: 0.0.0.0
+
+quiz:
+  result:
+    ttl: 30000
+
+logging:
+  level:
+    org:
+      grattis: DEBUG
+
+management:
+  context-path: /admin
+
+info:
+  build:
+#    artifact: @project.artifactId@
+#    name: @project.name@
+#    description: @project.description@
+#    version: @project.version@

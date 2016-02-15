@@ -1,0 +1,39 @@
+{
+  "name": "CADEC2016",
+  "thinkTimeInSeconds": 15,
+  "closed": false,
+  "quizQuestions": [
+    {
+      "question": "Hur lång är ett snöre",
+      "alternative1": "1m",
+      "alternative2": "2m",
+      "alternative3": "3m",
+      "alternative4": "4m",
+      "correctAnswer": 0
+    },
+    {
+      "question": "Hur brett är ett snöre",
+      "alternative1": "1m",
+      "alternative2": "2m",
+      "alternative3": "3m",
+      "alternative4": "4m",
+      "correctAnswer": 1
+    },
+    {
+      "question": "Hur högt är ett snöre",
+      "alternative1": "1m",
+      "alternative2": "2m",
+      "alternative3": "3m",
+      "alternative4": "4m",
+      "correctAnswer": 2
+    },
+    {
+      "question": "Vilken färg har snöret",
+      "alternative1": "Rött",
+      "alternative2": "Gult",
+      "alternative3": "Blått",
+      "alternative4": "Grönt",
+      "correctAnswer": 3
+    }
+  ]
+}

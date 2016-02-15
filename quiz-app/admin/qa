@@ -1,0 +1,100 @@
+#!/usr/bin/env python
+
+# coding=utf-8
+__author__ = 'Peter'
+
+import os, sys, getopt, json, httplib
+
+
+class APIError(Exception):
+    def __init__(self, response):
+        self.response = response
+    def __str__(self):
+        return repr(self.response)
+
+def server():
+    """Return server endpoint"""
+    return os.environ.get('QUIZ_SERVER', 'quiz.cadec.se')
+
+def usage(code):
+    """Print usage and exit with code
+
+    code -- the exit code
+    """
+    print 'qa [options]'
+    print 'options:'
+    print '\t-e, --endpoint <FQDN[:port]>:\tendpoint to connect to'
+    print '\t-c, --close <quiz-name>:\tclose quiz'
+    print '\t-s, --standings <quiz-name>:\tprint standings for quiz'
+    print '\t-d, --download <quiz-name>:\tdownload quiz'
+    print '\t-u, --upload <quiz-json-file>:\tupload new quiz'
+    print '\t-h, --help:\t\t\tthis help text'
+    sys.exit(code)
+
+def run(path, method, data):
+    connection = httplib.HTTPConnection(server())
+    connection.request(method, path, json.dumps(data))
+    response = connection.getresponse()
+    if (response.status not in [200, 201]):
+        raise APIError(response)
+    else:
+        return response
+
+def download(name):
+    path = "/api/quizzes/{}".format(name)
+    response = run(path, 'GET', None)
+    print "OK Quiz " + name + " has been successfully downloaded"
+    print response.read()
+
+def close(name):
+    path = "/api/quizzes/{}/close".format(name)
+    response = run(path, 'PUT', None)
+    print "OK Quiz " + name + " has been successfully closed"
+    print response.read()
+
+def standings(name):
+    path = "/api/quizzes/{}/results".format(name)
+    response = run(path, 'GET', None)
+    fmt = '{:>4} {:<45}{:>5}{:>10}'
+    print "OK Actual standings are as follows"
+    print fmt.format('#', 'Email', 'Score', 'Time [ms]')
+    for i, record in enumerate(json.load(response)['userResults']):
+        print fmt.format(i+1, record['user']['email'], record['score'], record['elapsed'])
+
+def main(argv):
+
+    def run():
+        usage(1)
+
+    if len(argv) == 0:
+        run()
+
+    try:
+        opts, args = getopt.getopt(argv, "hc:s:e:d:", ["help", "close=", "standings=", "endpoint=", "download="])
+    except getopt.GetoptError:
+        usage(1)
+
+    for opt, arg in opts:
+        if opt in ("-h", "--help"):
+            usage(0)
+        elif opt in ["-c", "--close"]:
+            def run():
+                close(arg)
+        elif opt in ["-d", "--download"]:
+            def run():
+                download(arg)
+        elif opt in ["-s", "--standings"]:
+            def run():
+                standings(arg)
+        elif opt in ["-e", "--endpoint"]:
+            os.environ['QUIZ_SERVER'] = arg
+    try:
+        run()
+    except APIError as e:
+        print e.response.status, e.response.reason
+        print e.response.read()
+        sys.exit(1)
+
+# main
+if __name__ == "__main__":
+    main(sys.argv[1:])
