@@ -52,12 +52,12 @@ def download(name):
 def upload(name):
     with open(name) as json_file:
         data = json.load(json_file)
-    response = run(qp(), 'POST', data)
+    run(qp(), 'POST', data)
     print "OK Quiz " + data['name'] + " has been successfully uploaded"
 
 def close(name):
     path = "{}/{}/close".format(qp(), name)
-    response = run(path, 'PUT', None)
+    run(path, 'PUT', None)
     print "OK Quiz " + name + " has been successfully closed"
 
 def standings(name):
